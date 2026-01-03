@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Spesial Buat Kamu 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+
+  .page {
+    display: none;
+    text-align: center;
+    animation: fade 1s ease;
+  }
+
+  .page.active {
+    display: block;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  button {
+    margin-top: 30px;
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: pink;
+    color: black;
+  }
+
+  /* Animations */
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes zoom {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+
+  .zoom {
+    animation: zoom 1s ease;
+  }
+
+  .heart {
+    position: absolute;
+    font-size: 24px;
+    animation: float 4s infinite;
+  }
+
+  @keyframes float {
+    from {
+      bottom: -10%;
+      opacity: 1;
+    }
+    to {
+      bottom: 110%;
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>Hai kamu 👋</h1>
+  <p>Ada sesuatu buat kamu</p>
+  <button onclick="nextPage()">Klik di sini 💌</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h1 class="zoom">Hari ini spesial ✨</h1>
+  <p>Jangan kemana-mana ya</p>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h1>🎂 HAPPY BIRTHDAY 🎂</h1>
+  <p class="zoom">Nama Kamu</p>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <p>Semoga panjang umur 🤍</p>
+  <p>Sehat selalu</p>
+  <p>Dan semua impianmu tercapai ✨</p>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h1 class="zoom">💖 Dari aku 💖</h1>
+  <p>Terima kasih sudah lahir ke dunia</p>
+</div>
+
+<audio id="music">
+  <source src="https://www.bensound.com/bensound-music/bensound-birthday.mp3">
+</audio>
+
+<script>
+  const pages = document.querySelectorAll('.page');
+  let index = 0;
+  const music = document.getElementById("music");
+
+  function nextPage() {
+    pages[index].classList.remove('active');
+    index++;
+
+    if (index < pages.length) {
+      pages[index].classList.add('active');
+    }
+
+    if (index === 1) {
+      document.body.style.background =
+        "linear-gradient(135deg,#ff758c,#ff7eb3)";
+      music.play();
+    }
+  }
+
+  // floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }, 800);
+</script>
+
+</body>
+</html>
