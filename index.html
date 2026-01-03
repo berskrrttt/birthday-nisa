@@ -1,58 +1,84 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Happy Birthday Bestie 🎂</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            color: #333;
-            padding: 50px;
-        }
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            margin: auto;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        h1 {
-            color: #ff4d6d;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .footer {
-            margin-top: 30px;
-            font-style: italic;
-            color: #666;
-        }
-        .emoji {
-            font-size: 40px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Spesial Buat Kamu 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+  }
+
+  #container {
+    max-width: 90%;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    background: pink;
+    color: black;
+    cursor: pointer;
+  }
+
+  .text {
+    font-size: 22px;
+    margin: 20px 0;
+    display: none;
+  }
+
+  .big {
+    font-size: 32px;
+  }
+</style>
 </head>
+
 <body>
-    <div class="card">
-        <div class="emoji">🎉🎂🎈</div>
-        <h1>Happy Birthday, Bestie! 💖</h1>
-        <p>
-            Semoga hari ulang tahunmu penuh tawa, kebahagiaan, dan kejutan manis ✨  
-            Terima kasih sudah jadi sahabat terbaik yang selalu ada,  
-            di saat senang maupun susah.
-        </p>
-        <p>
-            Semoga semua mimpi dan harapanmu pelan-pelan jadi kenyataan 🤍  
-            Jangan lupa tetap jadi kamu yang luar biasa!
-        </p>
-        <div class="footer">
-            With lots of love 💕<br>
-            — Your Best Friend
-        </div>
-    </div>
+
+<div id="container">
+  <button id="startBtn">Klik di sini 💌</button>
+
+  <div id="t1" class="text">Hai kamu 😊</div>
+  <div id="t2" class="text">Hari ini hari yang spesial 🎉</div>
+  <div id="t3" class="text big">🎂 HAPPY BIRTHDAY 🎂</div>
+  <div id="t4" class="text">Semoga selalu sehat</div>
+  <div id="t5" class="text">Panjang umur</div>
+  <div id="t6" class="text">Dan semua impianmu tercapai ✨</div>
+  <div id="t7" class="text big">💖 Dari aku 💖</div>
+</div>
+
+<audio id="music">
+  <source src="https://www.bensound.com/bensound-music/bensound-birthday.mp3">
+</audio>
+
+<script>
+  const btn = document.getElementById("startBtn");
+  const music = document.getElementById("music");
+
+  const texts = ["t1","t2","t3","t4","t5","t6","t7"];
+
+  btn.onclick = () => {
+    btn.style.display = "none";
+    document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
+    music.play();
+
+    texts.forEach((id, i) => {
+      setTimeout(() => {
+        document.getElementById(id).style.display = "block";
+      }, i * 1500);
+    });
+  };
+</script>
+
 </body>
 </html>
