@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Spesial Buat Kamu 💖</title>
+
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+
+  .page {
+    display: none;
+    text-align: center;
+    animation: fade 1s ease;
+    max-width: 90%;
+  }
+
+  .page.active {
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  img.gif {
+    width: 220px;
+    margin: 20px 0;
+    border-radius: 15px;
+    animation: zoom 1s ease;
+  }
+
+  button {
+    margin-top: 25px;
+    padding: 12px 32px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: #ffb6c1;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Animations */
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes zoom {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+
+  .heart {
+    position: absolute;
+    font-size: 22px;
+    animation: float 4s infinite;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    from {
+      bottom: -10%;
+      opacity: 1;
+    }
+    to {
+      bottom: 110%;
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>Hai kamu 👋</h1>
+  <img class="gif" src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif">
+  <p>Ada sesuatu buat kamu 😆</p>
+  <button onclick="nextPage()">Klik di sini 💌</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h1>Hari ini spesial ✨</h1>
+  <img class="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+  <p>Jangan kemana-mana ya</p>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h1>🎂 Happy Birthday 🎂</h1>
+  <img class="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+  <p style="font-size:26px;font-weight:600;">Nama Kamu</p>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <img class="gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+  <p>Semoga panjang umur 🤍</p>
+  <p>Sehat selalu</p>
+  <p>Dan semua impianmu tercapai ✨</p>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h1>💖 Dari aku 💖</h1>
+  <img class="gif" src="https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif">
+  <p>Terima kasih sudah lahir ke dunia 🌍</p>
+</div>
+
+<audio id="music" preload="auto">
+  <source src="https://www.bensound.com/bensound-music/bensound-birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const pages = document.querySelectorAll('.page');
+  let index = 0;
+  const music = document.getElementById("music");
+  let musicStarted = false;
+
+  function nextPage() {
+    // PASTIIN MUSIK NYALA SETELAH KLIK
+    if (!musicStarted) {
+      music.muted = false;
+      music.currentTime = 0;
+      music.play().catch(() => {});
+      musicStarted = true;
+    }
+
+    pages[index].classList.remove('active');
+    index++;
+
+    if (index < pages.length) {
+      pages[index].classList.add('active');
+    }
+
+    if (index === 1) {
+      document.body.style.background =
+        "linear-gradient(135deg,#ff758c,#ff7eb3)";
+    }
+  }
+
+  // Floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 900);
+</script>
+
+</body>
+</html>
