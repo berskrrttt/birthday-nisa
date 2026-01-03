@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Spesial Buat Kamu 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+  }
+
+  #container {
+    max-width: 90%;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    background: pink;
+    color: black;
+    cursor: pointer;
+  }
+
+  .text {
+    font-size: 22px;
+    margin: 20px 0;
+    display: none;
+  }
+
+  .big {
+    font-size: 32px;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+  <button id="startBtn">Klik di sini 💌</button>
+
+  <div id="t1" class="text">Hai kamu 😊</div>
+  <div id="t2" class="text">Hari ini hari yang spesial 🎉</div>
+  <div id="t3" class="text big">🎂 HAPPY BIRTHDAY 🎂</div>
+  <div id="t4" class="text">Semoga selalu sehat</div>
+  <div id="t5" class="text">Panjang umur</div>
+  <div id="t6" class="text">Dan semua impianmu tercapai ✨</div>
+  <div id="t7" class="text big">💖 Dari aku 💖</div>
+</div>
+
+<audio id="music">
+  <source src="https://www.bensound.com/bensound-music/bensound-birthday.mp3">
+</audio>
+
+<script>
+  const btn = document.getElementById("startBtn");
+  const music = document.getElementById("music");
+
+  const texts = ["t1","t2","t3","t4","t5","t6","t7"];
+
+  btn.onclick = () => {
+    btn.style.display = "none";
+    document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
+    music.play();
+
+    texts.forEach((id, i) => {
+      setTimeout(() => {
+        document.getElementById(id).style.display = "block";
+      }, i * 1500);
+    });
+  };
+</script>
+
+</body>
+</html>
